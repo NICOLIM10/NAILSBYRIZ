@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Nails by Riz</title>
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E7BE;
+            --gold-dark: #996515;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--white), var(--gold-light));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(45deg, var(--gold-primary), var(--white));
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background: linear-gradient(to right, var(--gold-dark), var(--gold-primary));
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(153, 101, 21, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold-light);
+        }
+
+        .register-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .register-container h2 {
+            color: var(--gold-dark);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--gold-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--gold-light);
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .register-btn {
+            background: linear-gradient(45deg, var(--gold-dark), var(--gold-primary));
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: var(--gold-dark);
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: linear-gradient(to right, var(--gold-dark), var(--gold-primary));
+            color: var(--white);
+            text-align: center;
+            padding: 25px;
+            margin-top: auto;
+        }
+
+        .password-requirements {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="NBR.png" alt="Nails by Riz Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="register-container">
+        <h2>Create Account</h2>
+        <form id="registerForm" onsubmit="return validateRegistration(event)">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="password-requirements">
+                    Password must be at least 8 characters long and include numbers and letters
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <button type="submit" class="register-btn">Create Account</button>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Nails by Riz. All rights reserved.</p>
+    </footer>
+
+    <script>
+function validateRegistration(event) {
+    event.preventDefault();
+    
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    // Basic validation
+    if (!fullName || !email || !phone || !password || !confirmPassword) {
+        alert('Please fill in all fields');
+        return false;
+    }
+
+    // Password validation
+    if (password.length < 8) {
+        alert('Password must be at least 8 characters long');
+        return false;
+    }
+
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+        alert('Password must contain both letters and numbers');
+        return false;
+    }
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return false;
+    }
+
+    // Create user data object
+    const userData = {
+        fullName: fullName,
+        email: email,
+        phone: phone,
+        registrationDate: new Date().toISOString().split('T')[0],
+        password: btoa(password) // Basic encoding for demonstration
+    };
+
+    // Store user data
+    localStorage.setItem(`user_${email}`, JSON.stringify(userData));
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('userEmail', email);
+
+    // Redirect to booking page
+    window.location.href = 'booking.html';
+    return false;
+}
+    </script>
+</body>
+</html>
