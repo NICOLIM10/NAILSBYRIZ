@@ -1,1048 +1,285 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Nails by Riz - Professional Nail Art Services</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Arial', sans-serif;
-            }
-
-            :root {
-                --gold-primary: #D4AF37;
-                --gold-light: #F4E7BE;
-                --gold-dark: #996515;
-                --white: #FFFFFF;
-            }
-
-            body {
-                background: linear-gradient(135deg, var(--white), var(--gold-light));
-                min-height: 100vh;
-            }
-
-            .header {
-                background: linear-gradient(45deg, var(--gold-primary), var(--white));
-                padding: 20px;
-                text-align: center;
-                box-shadow: 0 2px 15px rgba(212, 175, 55, 0.3);
-            }
-
-            .logo {
-                max-width: 200px;
-                margin-bottom: 20px;
-            }
-
-            nav {
-                background: linear-gradient(to right, var(--gold-dark), var(--gold-primary));
-                padding: 15px 0;
-                box-shadow: 0 2px 10px rgba(153, 101, 21, 0.3);
-            }
-
-            nav ul {
-                list-style: none;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 0;
-                margin: 0;
-            }
-
-            nav ul .main-menu {
-                display: flex;
-                gap: 40px;
-                justify-content: center;
-                align-items: center;
-            }
-
-            nav ul li {
-                display: inline;
-                margin: 0 20px;
-            }
-
-            nav ul li a {
-                color: var(--white);
-                text-decoration: none;
-                font-size: 16px;
-                font-weight: 500;
-                transition: all 0.3s ease;
-            }
-
-            nav ul li a:hover {
-                color: var(--gold-light);
-                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            }
-
-            .hero {
-                text-align: center;
-                padding: 80px 20px;
-                background: linear-gradient(135deg, var(--gold-light), var(--white));
-                position: relative;
-                overflow: hidden;
-            }
-
-            .hero::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1));
-                transform: skewY(-5deg);
-            }
-
-            .hero h1 {
-                font-size: 2.8em;
-                color: var(--gold-dark);
-                margin-bottom: 20px;
-                position: relative;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            }
-
-            .hero p {
-                font-size: 1.2em;
-                color: #666;
-                max-width: 800px;
-                margin: 0 auto;
-                position: relative;
-            }
-
-            .services {
-                padding: 70px 20px;
-                text-align: center;
-                background: linear-gradient(135deg, var(--white), var(--gold-light));
-            }
-
-            .services h2 {
-                font-size: 2.3em;
-                color: var(--gold-dark);
-                margin-bottom: 50px;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-            }
-
-            .service-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 30px;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
-            .service-card {
-                background: var(--white);
-                padding: 30px;
-                border-radius: 15px;
-                box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-                border: 1px solid rgba(212, 175, 55, 0.1);
-                transition: all 0.3s ease;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .service-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 5px;
-                background: linear-gradient(to right, var(--gold-primary), var(--gold-light));
-            }
-
-            .service-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-            }
-
-            .service-card h3 {
-                color: var(--gold-dark);
-                margin: 15px 0;
-                font-size: 1.4em;
-            }
-
-            .service-card p {
-                color: #666;
-                line-height: 1.6;
-            }
-
-            .footer {
-                background: linear-gradient(to right, var(--gold-dark), var(--gold-primary));
-                color: var(--white);
-                text-align: center;
-                padding: 25px;
-                position: relative;
-                width: 100%;
-                box-shadow: 0 -2px 10px rgba(153, 101, 21, 0.3);
-            }
-            
-            .booking-button {
-                background: linear-gradient(45deg, var(--gold-dark), var(--gold-primary));
-                color: var(--white);
-                padding: 15px 40px;
-                font-size: 1.2em;
-                border: none;
-                border-radius: 30px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-                text-decoration: none;
-                display: inline-block;
-                margin-top: 30px;
-                position: relative;
-                z-index: 2;
-            }
-
-            .booking-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-                background: linear-gradient(45deg, var(--gold-primary), var(--gold-dark));
-            }
-            
-            .login-btn {
-                background: var(--gold-dark);
-                padding: 8px 20px;
-                border-radius: 20px;
-                transition: all 0.3s ease;
-            }
-
-            .login-btn:hover {
-                background: var(--gold-primary);
-                transform: translateY(-2px);
-            }
-            
-            .user-menu {
-                position: relative;
-                display: inline-block;
-            }
-
-            .user-menu-content {
-                display: none;
-                position: absolute;
-                right: 0;
-                background-color: var(--white);
-                min-width: 160px;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-                border-radius: 8px;
-                z-index: 1000;
-            }
-
-            .user-menu-content a {
-                color: var(--gold-dark);
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-                transition: all 0.3s ease;
-            }
-
-            .user-menu-content a:hover {
-                background-color: var(--gold-light);
-            }
-
-            .user-avatar {
-                width: 35px;
-                height: 35px;
-                border-radius: 50%;
-                background-color: var(--gold-light);
-                display: none;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                color: var(--gold-dark);
-                font-weight: bold;
-            }
-
-            .show {
-                display: block;
-            }
-
-            .welcome-message {
-                display: none;
-                color: var(--white);
-                margin-right: 15px;
-            }
-                    /* Notification styles */
-        .notification-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 2000;
-            max-width: 350px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Manager - Nails by Riz</title>
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E7BE;
+            --gold-dark: #996515;
+            --white: #FFFFFF;
         }
 
-        .notification {
-            background: var(--white);
-            border-left: 4px solid var(--gold-primary);
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            animation: slideIn 0.3s ease-out;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
-        .notification.success {
-            border-left-color: #28a745;
-        }
-
-        .notification.error {
-            border-left-color: #dc3545;
-        }
-
-        .notification-content {
-            flex-grow: 1;
-            margin-right: 10px;
-        }
-
-        .notification-title {
-            font-weight: bold;
-            color: var(--gold-dark);
-            margin-bottom: 5px;
-        }
-
-        .notification-message {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .notification-close {
-            color: #999;
-            cursor: pointer;
-            font-size: 1.2em;
-            padding: 0 5px;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-            .auth-buttons {
-                display: flex;
-                gap: 10px;
-                margin-left: auto;
-            }
-
-            .signup-btn {
-                background: transparent;
-                border: 2px solid var(--white);
-                padding: 8px 20px;
-                border-radius: 20px;
-                color: var(--white);
-                text-decoration: none;
-                transition: all 0.3s ease;
-            }
-
-            .signup-btn:hover {
-                background: var(--white);
-                color: var(--gold-dark);
-            }
-            
-            /* Sidebar Styles */
-            .sidebar {
-                height: 100%;
-                width: 250px;
-                position: fixed;
-                top: 0;
-                left: -250px;
-                background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
-                padding-top: 60px;
-                transition: 0.3s;
-                z-index: 1000;
-                box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
-            }
-
-            .sidebar.active {
-                left: 0;
-            }
-
-            .sidebar-toggle {
-                position: fixed;
-                left: 20px;
-                top: 20px;
-                z-index: 1001;
-                background: var(--gold-dark);
-                border: none;
-                color: var(--white);
-                padding: 10px 15px;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: 0.3s;
-            }
-
-            .sidebar-toggle:hover {
-                background: var(--gold-primary);
-            }
-
-            .sidebar-menu {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                text-align: center;
-            }
-
-            .sidebar-menu li {
-                padding: 15px 25px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            /* Add new styles for logout button */
-            .sidebar-logout {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                padding: 20px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                text-align: center;
-            }
-
-            .sidebar-logout button {
-                background: transparent;
-                border: 2px solid var(--white);
-                color: var(--white);
-                padding: 10px 30px;
-                border-radius: 20px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                font-size: 16px;
-                width: 100%;
-            }
-
-            .sidebar-logout button:hover {
-                background: var(--white);
-                color: var(--gold-dark);
-            }
-
-            .sidebar-menu li a {
-                color: var(--white);
-                text-decoration: none;
-                font-size: 16px;
-                display: block;
-                transition: 0.3s;
-                text-align: center;
-            }
-
-            .sidebar-menu li a:hover {
-                color: var(--gold-light);
-                transform: scale(1.05);
-            }
-
-            .sidebar-header {
-                text-align: center;
-                padding: 20px;
-                color: var(--white);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            /* Adjust main content when sidebar is active */
-            .content-wrapper {
-                transition: 0.3s;
-                padding-left: 0;
-            }
-
-            .content-wrapper.shifted {
-                padding-left: 250px;
-            }
-
-            @media (max-width: 768px) {
-                .content-wrapper.shifted {
-                    padding-left: 0;
-                }
-                
-                nav ul {
-                    flex-direction: column;
-                    gap: 15px;
-                }
-                
-                nav ul .main-menu {
-                    flex-wrap: wrap;
-                    justify-content: center;
-                }
-                
-                .auth-buttons {
-                    margin-left: 0;
-                }
-            }
-            
-            .sidebar-profile {
-                padding: 20px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .sidebar .user-menu {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                color: var(--white);
-            }
-
-            .sidebar .user-avatar {
-                margin: 10px 0;
-                width: 50px;
-                height: 50px;
-                background-color: var(--gold-light);
-            }
-
-            .sidebar .user-menu-content {
-                position: relative;
-                width: 100%;
-                background-color: transparent;
-                box-shadow: none;
-                display: none;
-            }
-
-            .sidebar .user-menu-content a {
-                color: var(--white);
-                padding: 10px;
-                text-align: center;
-                border-radius: 5px;
-            }
-
-            .sidebar .user-menu-content a:hover {
-                background-color: rgba(255, 255, 255, 0.1);
-            }
-
-            .sidebar .welcome-message {
-                display: block;
-                text-align: center;
-                margin-bottom: 10px;
-            }
-        .sidebar-menu .auth-buttons {
-            padding: 20px;
+        body {
+            background: linear-gradient(135deg, var(--white), var(--gold-light));
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .sidebar-menu .auth-buttons a {
-            width: 100%;
+        .header {
+            background: linear-gradient(45deg, var(--gold-primary), var(--white));
+            padding: 20px;
             text-align: center;
-            padding: 10px;
+            box-shadow: 0 2px 15px rgba(212, 175, 55, 0.3);
         }
 
-        .sidebar-menu .login-btn {
-            background: var(--white);
-            color: var(--gold-dark);
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
         }
 
-        .sidebar-menu .signup-btn {
-            border: 2px solid var(--white);
-            color: var(--white);
+        nav {
+            background: linear-gradient(to right, var(--gold-dark), var(--gold-primary));
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(153, 101, 21, 0.3);
         }
 
-        .sidebar-menu .login-btn:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
+        nav ul {
+            list-style: none;
+            text-align: center;
         }
 
-        .sidebar-menu li a {
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
             color: var(--white);
             text-decoration: none;
             font-size: 16px;
-            display: block;
-            transition: 0.3s;
-            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
-        .sidebar-menu li a:hover {
+        nav ul li a:hover {
             color: var(--gold-light);
-            transform: scale(1.05);
         }
 
-        .sidebar-header {
+        .manager-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .manager-container h2 {
+            color: var(--gold-dark);
             text-align: center;
-            padding: 20px;
-            color: var(--white);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            font-size: 2em;
         }
 
-        /* Adjust main content when sidebar is active */
-        .content-wrapper {
-            transition: 0.3s;
-            padding-left: 0;
-        }
-
-        .content-wrapper.shifted {
-            padding-left: 250px;
-        }
-
-        @media (max-width: 768px) {
-            .content-wrapper.shifted {
-                padding-left: 0;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            nav ul .main-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .auth-buttons {
-                margin-left: 0;
-            }
-        }
-        
-        .sidebar-profile {
-            padding: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .sidebar .user-menu {
+        .search-bar {
+            margin-bottom: 20px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--white);
+            gap: 10px;
         }
 
-        .sidebar .user-avatar {
-            margin: 10px 0;
-            width: 50px;
-            height: 50px;
-            background-color: var(--gold-light);
-        }
-
-        .sidebar .user-menu-content {
-            position: relative;
-            width: 100%;
-            background-color: transparent;
-            box-shadow: none;
-            display: none;
-        }
-
-        .sidebar .user-menu-content a {
-            color: var(--white);
+        .search-bar input {
+            flex: 1;
             padding: 10px;
-            text-align: center;
+            border: 1px solid var(--gold-light);
             border-radius: 5px;
+            font-size: 16px;
         }
 
-        .sidebar .user-menu-content a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        .search-btn {
+            background: linear-gradient(45deg, var(--gold-dark), var(--gold-primary));
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .sidebar .welcome-message {
-            display: block;
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .accounts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .accounts-table th,
+        .accounts-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gold-light);
+        }
+
+        .accounts-table th {
+            background-color: var(--gold-light);
+            color: var(--gold-dark);
+        }
+
+        .accounts-table tr:hover {
+            background-color: rgba(244, 231, 190, 0.2);
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .edit-btn {
+            background-color: var(--gold-primary);
+            color: var(--white);
+        }
+
+        .delete-btn {
+            background-color: #ff4444;
+            color: var(--white);
+        }
+
+        .action-btn:hover {
+            opacity: 0.8;
+        }
+
+        .footer {
+            background: linear-gradient(to right, var(--gold-dark), var(--gold-primary));
+            color: var(--white);
             text-align: center;
-            margin-bottom: 10px;
+            padding: 25px;
+            margin-top: auto;
         }
-        .service-image {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-                border-radius: 10px;
-                margin-bottom: 15px;
-            }
-
-            .gallery-section {
-                padding: 70px 20px;
-                background: linear-gradient(135deg, var(--gold-light), var(--white));
-                text-align: center;
-            }
-
-            .gallery-section h2 {
-                font-size: 2.3em;
-                color: var(--gold-dark);
-                margin-bottom: 50px;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-            }
-
-            .gallery-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
-            .gallery-item {
-                position: relative;
-                overflow: hidden;
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-                transition: transform 0.3s ease;
-            }
-
-            .gallery-item:hover {
-                transform: scale(1.05);
-            }
-
-            .gallery-item img {
-                width: 100%;
-                height: 250px;
-                object-fit: cover;
-            }
-
-            .testimonials {
-                padding: 70px 20px;
-                background: linear-gradient(135deg, var(--white), var(--gold-light));
-                text-align: center;
-            }
-
-            .testimonials h2 {
-                font-size: 2.3em;
-                color: var(--gold-dark);
-                margin-bottom: 50px;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-            }
-
-            .testimonial-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 30px;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
-            .testimonial-card {
-                background: var(--white);
-                padding: 30px;
-                border-radius: 15px;
-                box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-            }
-
-            .client-image {
-                width: 80px;
-                height: 80px;
-                border-radius: 50%;
-                margin: 0 auto 20px;
-                object-fit: cover;
-            }
-
-            .testimonial-text {
-                color: #666;
-                font-style: italic;
-                margin-bottom: 15px;
-                line-height: 1.6;
-            }
-
-            .client-name {
-                color: var(--gold-dark);
-                font-weight: bold;
-            }
-
-            @media (max-width: 768px) {
-                .gallery-grid {
-                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                }
-
-                .testimonial-grid {
-                    grid-template-columns: 1fr;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
-        b
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <h3>Nails by Riz</h3>
-            </div>
-            <!-- Add user profile section to sidebar -->
-            <div class="sidebar-profile">
-                <div class="user-menu">
-                    <span class="welcome-message">Welcome, <span id="sidebarUsername">User</span></span>
-                    <div class="user-avatar" id="sidebarUserAvatar">U</div>
-                    <div class="user-menu-content" id="sidebarUserMenuContent">
-                        <a href="profile.html">My Profile</a>
-                        <a href="appointments.html">My Appointments</a>
-                        <a href="settings.html">Settings</a>
-                        <a href="#" id="sidebarLogoutLink">Logout</a>
-                        <div class="notification-container" id="notificationContainer"></div>
-                    </div>
-                </div>
-            </div>
-            <ul class="sidebar-menu">
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="NBR.png" alt="Nails by Riz Logo" class="logo">
+        <nav>
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="booking.html">Book Appointment</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li class="auth-buttons" id="sidebarAuthButtons">
-                    <a href="login.html" class="login-btn">Login</a>
-                    <a href="signup.html" class="signup-btn">Sign up</a>
-                </li>
             </ul>
+        </nav>
+    </header>
 
-            <div class="sidebar-logout">
-                <button id="sidebarLogoutBtn">Logout</button>
-            </div>
+    <main class="manager-container">
+        <h2>Account Manager</h2>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by name or email...">
+            <button class="search-btn" onclick="searchAccounts()">Search</button>
         </div>
+        <table class="accounts-table">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Registration Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="accountsTableBody">
+                <!-- Table content will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </main>
 
-        <div class="content-wrapper" id="contentWrapper">
-            <header class="header">
-                <img src="NBR.png" alt="Nails by Riz Logo" class="logo">
-                <nav>
-                    <ul>
-                        <div class="main-menu">
-                            <li><a href="HOMEPAGE.html">Home</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="about.html">about us</a></li>
-                        </div>
-                        <li class="user-menu" id="userMenuContainer">
-                            <span class="welcome-message">Welcome, <span id="navUsername">User</span></span>
-                            <div class="user-avatar" id="navUserAvatar">U</div>
-                            <div class="user-menu-content" id="navUserMenuContent">
-                                <a href="profile.html">My Profile</a>
-                                <a href="appointments.html">My Appointments</a>
-                                <a href="settings.html">Settings</a>
-                                <a href="#" id="navLogoutBtn">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+    <footer class="footer">
+        <p>&copy; 2024 Nails by Riz. All rights reserved.</p>
+    </footer>
 
-            <section class="hero">
-                <h1>Welcome to Nails by Riz</h1>
-                <p>Experience the art of beautiful nails with our signature designs and professional services. We specialize in creating stunning nail art that reflects your unique style and personality.</p>
-                <a href="booking.html" class="booking-button">Book an Appointment</a>
-            </section>
+    <script>
+        // Sample data structure for accounts (in a real application, this would come from a database)
+        let accounts = [];
 
-            <section class="services" id="services">
-                <h2>Our Signature Services</h2>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h3>Manicure</h3>
-                        <p>Professional nail care and beautiful designs for your hands</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Nail Extensions</h3>
-                        <p>Professional nail extension services for added length and style</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Nail Art</h3>
-                        <p>Custom designs and creative nail art solutions</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Gel Extensions</h3>
-                        <p>Long-lasting and naturally beautiful nail extensions</p>
-                    </div>
-                </div>
-                <div class="services">
-                    <h2>Our Services</h2>
-                    <div class="service-grid">
-                        <div class="service-card">
-                            <img src="a13.png" alt="Manicure Service" class="service-image">
-                            <h3>Professional Manicure</h3>
-                            <p>Pamper your hands with our luxurious manicure services, including nail shaping, cuticle care, and premium polish application.</p>
-                        </div>
-                        <div class="service-card">
-                            <img src="a10.jpg" alt="Nail Art Service" class="service-image">
-                            <h3>Creative Nail Art</h3>
-                            <p>Express your personality with our custom nail art designs, from simple patterns to elaborate masterpieces.</p>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="gallery-section">
-                    <h2>Our Latest Work</h2>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="a3.jpg" alt="Nail Design 1">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="a4.jpg" alt="Nail Design 2">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="a5.jpg" alt="Nail Design 3">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="a1.jpg" alt="Nail Design 4">
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="testimonials">
-                    <h2>What Our Clients Say</h2>
-                    <div class="testimonial-grid">
-                        <div class="testimonial-card">
-                            <img src="a6.jpg" alt="Client 1" class="client-image">
-                            <p class="testimonial-text">"The best nail salon I've ever been to! The attention to detail is amazing."</p>
-                            <p class="client-name">- Sarah Johnson</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <img src="a7.jpg" alt="Client 2" class="client-image">
-                            <p class="testimonial-text">"Love how my nails look every single time. Highly recommended!"</p>
-                            <p class="client-name">- Emily Davis</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        // Function to load accounts from localStorage
+        function loadAccounts() {
+            // Get all keys from localStorage
+            const keys = Object.keys(localStorage);
+            accounts = [];
 
-            <footer class="footer">
-                <p>&copy; 2024 Nails by Riz. All rights reserved.</p>
-            </footer>
-        </div>
-        
-        <script>
-            // Check if user is logged in (you'll need to implement proper session management)
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-            const username = localStorage.getItem('username');
-
-            // Elements
-            // Elements
-            const authButtons = document.getElementById('sidebarAuthButtons');
-            const userMenuContainer = document.getElementById('userMenuContainer');
-            const navUserAvatar = document.getElementById('navUserAvatar');
-            const sidebarUserAvatar = document.getElementById('sidebarUserAvatar');
-            const navUsername = document.getElementById('navUsername');
-            const sidebarUsername = document.getElementById('sidebarUsername');
-            const navUserMenuContent = document.getElementById('navUserMenuContent');
-            const sidebarUserMenuContent = document.getElementById('sidebarUserMenuContent');
-
-            // Update UI based on login state
-            if (isLoggedIn === 'true') {
-                authButtons.style.display = 'none';
-                userMenuContainer.style.display = 'block';
-                navUserAvatar.style.display = 'flex';
-                sidebarUserAvatar.style.display = 'flex';
-                
-                // Set username
-                const displayName = username || 'User';
-                navUsername.textContent = displayName;
-                sidebarUsername.textContent = displayName;
-                
-                // Set avatar initial
-                const initial = (displayName.charAt(0) || 'U').toUpperCase();
-                navUserAvatar.textContent = initial;
-                sidebarUserAvatar.textContent = initial;
-            } else {
-                authButtons.style.display = 'flex';
-                userMenuContainer.style.display = 'none';
-                document.querySelector('.sidebar-profile').style.display = 'none';
-                document.querySelector('.sidebar-logout').style.display = 'none';
-            }
-
-            // Toggle user menu in navbar
-            navUserAvatar.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navUserMenuContent.classList.toggle('show');
-            });
-
-            // Toggle user menu in sidebar
-            sidebarUserAvatar.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sidebarUserMenuContent.classList.toggle('show');
-            });
-
-            // Close menus when clicking outside
-            window.addEventListener('click', (event) => {
-                if (!event.target.matches('.user-avatar')) {
-                    if (navUserMenuContent.classList.contains('show')) {
-                        navUserMenuContent.classList.remove('show');
-                    }
-                    if (sidebarUserMenuContent.classList.contains('show')) {
-                        sidebarUserMenuContent.classList.remove('show');
+            // Find all stored user data
+            keys.forEach(key => {
+                if (key.startsWith('user_')) {
+                    try {
+                        const userData = JSON.parse(localStorage.getItem(key));
+                        accounts.push(userData);
+                    } catch (e) {
+                        console.error('Error parsing user data:', e);
                     }
                 }
             });
 
-            // Logout functionality
-            const logoutHandlers = [
-                document.getElementById('navLogoutBtn'), 
-                document.getElementById('sidebarLogoutBtn'),
-                document.getElementById('sidebarLogoutLink')
-            ];
-            
-            logoutHandlers.forEach(element => {
-                if (element) {
-                    element.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        localStorage.setItem('isLoggedIn', 'false');
-                        localStorage.removeItem('username');
-                        window.location.reload();
-                    });
-                }
-            });
-
-            // Sidebar Toggle Functionality
-            const sidebarToggle = document.getElementById('sidebarToggle');
-            const sidebar = document.getElementById('sidebar');
-            const contentWrapper = document.getElementById('contentWrapper');
-
-            sidebarToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sidebar.classList.toggle('active');
-                contentWrapper.classList.toggle('shifted');
-            });
-
-            // Close sidebar when clicking outside
-            document.addEventListener('click', (event) => {
-                if (!sidebar.contains(event.target) && 
-                    !sidebarToggle.contains(event.target) && 
-                    sidebar.classList.contains('active')) {
-                    sidebar.classList.remove('active');
-                    contentWrapper.classList.remove('shifted');
-                }
-            });
-            function showNotification(title, message, type = 'info') {
-            const container = document.getElementById('notificationContainer');
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            
-            notification.innerHTML = `
-                <div class="notification-content">
-                    <div class="notification-title">${title}</div>
-                    <div class="notification-message">${message}</div>
-                </div>
-                <span class="notification-close">&times;</span>
-            `;
-            
-            container.appendChild(notification);
-            
-            // Add click event for close button
-            const closeBtn = notification.querySelector('.notification-close');
-            closeBtn.addEventListener('click', () => {
-                notification.remove();
-            });
-            
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                notification.remove();
-            }, 5000);
+            displayAccounts(accounts);
         }
 
-        // Check for booking status in URL parameters
-        window.addEventListener('load', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const bookingStatus = urlParams.get('bookingStatus');
-            const bookingMessage = urlParams.get('message');
-            
-            if (bookingStatus === 'confirmed') {
-                showNotification(
-                    'Booking Confirmed!',
-                    bookingMessage || 'Your appointment has been confirmed.',
-                    'success'
-                );
-            } else if (bookingStatus === 'cancelled') {
-                showNotification(
-                    'Booking Cancelled',
-                    bookingMessage || 'Your appointment has been cancelled.',
-                    'error'
-                );
+        // Function to display accounts in the table
+        function displayAccounts(accountsToShow) {
+            const tableBody = document.getElementById('accountsTableBody');
+            tableBody.innerHTML = '';
+
+            accountsToShow.forEach(account => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${account.fullName}</td>
+                    <td>${account.email}</td>
+                    <td>${account.phone}</td>
+                    <td>${account.registrationDate || 'N/A'}</td>
+                    <td>
+                        <button class="action-btn edit-btn" onclick="editAccount('${account.email}')">Edit</button>
+                        <button class="action-btn delete-btn" onclick="deleteAccount('${account.email}')">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to search accounts
+        function searchAccounts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredAccounts = accounts.filter(account => 
+                account.fullName.toLowerCase().includes(searchTerm) ||
+                account.email.toLowerCase().includes(searchTerm)
+            );
+            displayAccounts(filteredAccounts);
+        }
+
+        // Function to edit account
+        function editAccount(email) {
+            const account = accounts.find(acc => acc.email === email);
+            if (account) {
+                // In a real application, this would open an edit form
+                alert('Edit functionality would be implemented here');
             }
-        });
-        </script>
-    </body>
-    </html>
+        }
+
+        // Function to delete account
+        function deleteAccount(email) {
+            if (confirm('Are you sure you want to delete this account?')) {
+                localStorage.removeItem(`user_${email}`);
+                accounts = accounts.filter(acc => acc.email !== email);
+                displayAccounts(accounts);
+            }
+        }
+
+        // Load accounts when the page loads
+        window.onload = loadAccounts;
+    </script>
+</body>
+</html>
